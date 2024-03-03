@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="assets/jquery-3.5.1.min.js"></script>
+    <script src="assets/bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="assets/styles.css">
+    </link>
+    <link rel="stylesheet" href="assets/bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <title>Sign up</title>
+</head>
+
+<body>
+    <div id="inputContainer">
+        <form id="inputForm" method="post" action="queryregister">
+            <p id="loginText">Register</p>
+            <div class="mb-3">
+                <label for="usernameInp" class="form-label">Username</label>
+                <input type="text" class="form-control" id="usernameInp" name="username" aria-describedby="usernameHelp" placeholder="Enter username">
+            </div>
+            <div class="mb-3">
+                <label for="passwordInp" class="form-label">Password</label>
+                <input type="password" class="form-control" id="passwordInp" name="password" placeholder="Enter password">
+            </div>
+            <button id="signupBtn" type="submit" class="btn">Sign up</button>
+            <a id="loginLink" href="index.html">Back to login</a>
+        </form>
+    </div>
+</body>
+
+</html>
