@@ -1,0 +1,42 @@
+DROP DATABASE phoneshop;
+create database if not exists phoneshop;
+ 
+use phoneshop;
+ 
+drop table if exists product;
+create table product (
+  id int,
+  brand varchar(50),
+  model varchar(50),
+  quantity int,
+  primary key (id));
+ 
+insert into product values (101, 'Apple', 'iPhone 15', 500);
+insert into product values (102, 'Apple', 'iPhone 15 Plus', 500);
+insert into product values (103, 'Apple', 'iPhone 15 Pro', 500);
+insert into product values (104, 'Apple', 'iPhone 15 Pro Max', 500);
+insert into product values (201, 'Samsung', 'Galaxy S24', 500);
+insert into product values (202, 'Samsung', 'Galaxy S24 Ultra', 500);
+insert into product values (203, 'Samsung', 'Galaxy Z Flip5', 500);
+insert into product values (204, 'Samsung', 'Galaxy Z Flip5', 3);
+
+drop table if exists customer;
+create table customer (
+  id int NOT NULL AUTO_INCREMENT,
+  username varchar(50),
+  password varchar(50),
+  primary key (id));
+
+drop table if exists order_records;
+create table order_records (
+  id int NOT NULL AUTO_INCREMENT,
+  customerId int,
+  brand varchar(50),
+  model varchar(50),
+  quantity int,
+  primary key (id),
+  FOREIGN KEY (customerId) REFERENCES customer(id));
+ 
+select * from product;
+select * from customer;
+select * from order_records;
