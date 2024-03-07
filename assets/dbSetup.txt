@@ -9,16 +9,17 @@ create table product (
   brand varchar(50),
   model varchar(50),
   quantity int,
+  filepath varchar(200),
   primary key (id));
  
-insert into product values (101, 'Apple', 'iPhone 15', 500);
-insert into product values (102, 'Apple', 'iPhone 15 Plus', 500);
-insert into product values (103, 'Apple', 'iPhone 15 Pro', 500);
-insert into product values (104, 'Apple', 'iPhone 15 Pro Max', 500);
-insert into product values (201, 'Samsung', 'Galaxy S24', 500);
-insert into product values (202, 'Samsung', 'Galaxy S24 Ultra', 500);
-insert into product values (203, 'Samsung', 'Galaxy Z Flip5', 500);
-insert into product values (204, 'Samsung', 'Galaxy Z Flip5', 3);
+insert into product values (101, 'Apple', 'iPhone 15', 500, 'assets/images/iPhone15.jpeg');
+insert into product values (102, 'Apple', 'iPhone 15 Plus', 500, 'assets/images/iPhone15Plus.jpeg');
+insert into product values (103, 'Apple', 'iPhone 15 Pro', 500, 'assets/images/iPhone15Pro.jpeg');
+insert into product values (104, 'Apple', 'iPhone 15 Pro Max', 500, 'assets/images/iPhone15ProMax.jpeg');
+insert into product values (201, 'Samsung', 'Galaxy S24', 500, 'assets/images/GalaxyS24.png');
+insert into product values (202, 'Samsung', 'Galaxy S24 Ultra', 500, 'assets/images/GalaxyS24Ultra.png');
+insert into product values (203, 'Samsung', 'Galaxy Z Flip5', 500, 'assets/images/GalaxyZFlip5.webp');
+insert into product values (204, 'Samsung', 'Galaxy Z Fold5', 3, 'assets/images/GalaxyZFold5.webp');
 
 drop table if exists customer;
 create table customer (

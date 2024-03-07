@@ -1,3 +1,9 @@
+body {
+    background-color: #e5e5e5 !important;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 /* Login start */
 #loginText {
     /* padding-top: 1em; */
@@ -29,6 +35,7 @@
     border-radius: 5px;
     font-weight: 500;
     margin-top: 0.5em;
+    transition: 500ms;
 }
 
 #signupBtn {
@@ -38,9 +45,17 @@
     border-radius: 5px;
     font-weight: 500;
     margin-top: 0.5em;
+    transition: 500ms;
 }
 
-#registerLink, #loginLink {
+#loginBtn:hover, #signupBtn:hover, #registerLink:hover,
+#loginLink:hover  {
+    filter: brightness(80%);
+    transition: 300ms;
+}
+
+#registerLink,
+#loginLink {
     color: rgb(8, 160, 255);
     text-decoration: none;
     text-align: center;
@@ -48,6 +63,207 @@
     display: block;
     margin: auto;
     margin-top: 0.5em;
+    transition: 500ms;
 }
 
 /* Login end */
+
+/* Main page start */
+
+/* Nav bar start */
+#desktopNav,
+#menuToggle {
+    transition: top 0.5s;
+}
+
+#defaultNav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1px rgb(212, 212, 212);
+}
+
+.defaultLink a {
+    display: block;
+    color: #333;
+    text-align: center;
+    padding: 1.3rem 1.8rem;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: 500ms;
+    letter-spacing: 0.3rem;
+}
+
+.defaultLink a:hover {
+    background-color: #111;
+    transition: 300ms;
+    text-decoration: none;
+    color: white;
+}
+
+.active a,
+.active {
+    color: #1abc9c !important;
+    font-weight: 400;
+}
+
+.dropdownList {
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+.dropdown {
+    align-items: center;
+}
+
+#navBrand {
+    padding: 0.5rem 1.5rem;
+    transition: 500ms;
+    
+}
+
+#navBrand img {
+    width: 3em;
+}
+
+#cart {
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+#cart img {
+    width: 3em;
+}
+
+#dropdownBtn, .dropdown-item {
+    transition: 500ms
+}
+
+#dropdownBtn:hover, .dropdown-item {
+    filter: brightness(80%);
+    transition: 300ms;
+}
+
+/* Nav bar end */
+
+/* Content start */
+
+
+#awardHeader {
+    text-align: center;
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.awardRow {
+    text-align: center;
+}
+
+.award {
+    margin: 0 3rem 5rem 3rem;
+}
+
+.centerH1 {
+    display: block;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+#productH1,
+#ourStoryH1,
+#contactH1 {
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+#saleText {
+    color: #efd415;
+}
+
+.itemCat {
+    margin: 1.55rem 5rem;
+    font-weight: 500;
+    font-size: 1.6rem;
+    color: black;
+    clear: both;
+}
+
+#productContainer {
+    background-color: white;
+    padding-top: 2em;
+}
+
+#ourStoryContainer {
+    background-color: #e5e5e5;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+#contactContainer {
+    background-color: black;
+    padding-top: 5em;
+    padding-bottom: 2em;
+    color: white;
+}
+
+.contactH1Section {
+    margin-top: 0 !important;
+}
+
+#appleItems,
+#samsungItems {
+    width: 100vw;
+    background-color: white;
+    text-align: center;
+}
+
+.oneProduct {
+    display: inline-block;
+    margin: auto;
+    text-align: center;
+}
+
+#appleItems img,
+#samsungItems img {
+    width: 18vw;
+    margin: 2rem 2rem 0.5rem 2rem;
+    text-align: center;
+    opacity: 1;
+    transition: 0.3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+}
+
+.quantityForm {
+    margin-bottom: 4rem;
+}
+
+.productName {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.quantityInp {
+    width: 3em !important;
+    margin: 0.5em 0.25em 0 0;
+}
+
+.buyBtn {
+    background-color: #efd415 !important;
+    /*#FDFD96*/
+    color: white !important;
+    margin-bottom: 0.275rem;
+    padding: 0.2rem 0.6rem !important;
+}
+
+
+
+
+/* Content end */
+
+/* Main page end */

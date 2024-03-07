@@ -22,9 +22,15 @@ public class RegisterServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         // Print an HTML page as the output of the query
         out.println("<html>");
-        out.println("<head><title>Query Response</title></head>");
+        out.println("<head><title>Query Response</title>");
+        out.println(
+                "<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH\" crossorigin=\"anonymous\">");
+        out.println(
+                "<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz\" crossorigin=\"anonymous\"></script>");
+        out.println("<script src=\"assets/sweetalert2.all.min.js\"></script>");
+        out.println("</head>");
         out.println("<body>");
-
+        String message = "";
         try (
                 // Step 1: Allocate a database 'Connection' object
                 Connection conn = DriverManager.getConnection(
@@ -36,20 +42,53 @@ public class RegisterServlet extends HttpServlet {
                 // Step 2: Allocate a 'Statement' object in the Connection
                 Statement stmt = conn.createStatement();) {
             // Step 3: Execute a SQL SELECT query
-            String sqlStr1 = "select * from customer where username = "
-                    + "'" + request.getParameter("username") + "'"; // Single-quote SQL string
-
-            out.println("<p>Your SQL statement is: " + sqlStr1 + "</p>"); // Echo for debugging
-            ResultSet rset = stmt.executeQuery(sqlStr1); // Send the query to the server
+            String sqlStr1 = "select * from customer where username = ?";
+            PreparedStatement preparedStatement = conn.prepareStatement(sqlStr1);
+            // Set parameter for the prepared statement
+            preparedStatement.setString(1, request.getParameter("username"));        
+            ResultSet rset = preparedStatement.executeQuery();; // Send the query to the server
 
             // Check if new user
             if (!rset.isBeforeFirst()) {
                 String sqlStr2 = "INSERT INTO customer (username, password) VALUES ('"
                         + request.getParameter("username") + "', '" + request.getParameter("password") + "')";
                 int count = stmt.executeUpdate(sqlStr2);
-                out.println("<p>Your SQL statement is: " + sqlStr2 + "," + count + "record inserted.</p>"); // Echo for debugging
+
+                message = "Please log into your account";
+                out.println("<script type=\"text/javascript\">");
+                out.println("Swal.fire({\r\n" + //
+                        "  title: \"Account has been created successfully!\",\r\n" + //
+                        "  text: \"" + message + "\",\r\n" + //
+                        "  allowOutsideClick: false,\r\n" + //
+                        "  allowEscapeKey: false,\r\n" + //
+                        "  allowEnterKey: false,\r\n" + //
+                        "  icon: \"success\",\r\n" + //
+                        "}).then((result) => {\r\n" + //
+                        "  if (result.isConfirmed) {\r\n" + //
+                        " location = 'index.html';" +
+                        "  }\r\n" + //
+                        "});");
+                out.println("</script>");
+                // out.println("<p>Your SQL statement is: " + sqlStr2 + "," + count + "record
+                // inserted.</p>"); // Echo for // debugging
             } else {
-                out.println("<p>" + request.getParameter("username") + " already exists!</p>");
+                message = "Please log into your account";
+                out.println("<script type=\"text/javascript\">");
+                out.println("Swal.fire({\r\n" + //
+                        "  title: \"User already exists!\",\r\n" + //
+                        "  text: \"" + message + "\",\r\n" + //
+                        "  allowOutsideClick: false,\r\n" + //
+                        "  allowEscapeKey: false,\r\n" + //
+                        "  allowEnterKey: false,\r\n" + //
+                        "  icon: \"warning\",\r\n" + //
+                        "}).then((result) => {\r\n" + //
+                        "  if (result.isConfirmed) {\r\n" + //
+                        " location = 'register.html';" +
+                        "  }\r\n" + //
+                        "});");
+                out.println("</script>");
+                // out.println("<p>" + request.getParameter("username") + " already
+                // exists!</p>");
             }
         } catch (Exception ex) {
             out.println("<p>Error: " + ex.getMessage() + "</p>");
